@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using EShop.Core.Helpers;
-using EShop.Core.Plugins.Authentication.Models;
+using ECommerce.Core.Helpers;
+using ECommerce.Core.Plugins.Authentication.Models;
 using Microsoft.IdentityModel.Tokens;
 
-namespace EShop.Core.Plugins.Authentication.Jwt
+namespace ECommerce.Core.Plugins.Authentication.Jwt
 {
     public class JwtService :IJwtService
     {

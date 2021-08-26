@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace EShop.Core.Exceptions
+namespace ECommerce.Core.Exceptions
 {
     public class BadRequestException : Exception
     {

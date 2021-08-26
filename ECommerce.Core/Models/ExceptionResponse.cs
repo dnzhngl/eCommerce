@@ -1,6 +1,6 @@
 ﻿using System.Net;
 
-namespace EShop.Core.Models
+namespace ECommerce.Core.Models
 {
     public class ExceptionResponse
     {

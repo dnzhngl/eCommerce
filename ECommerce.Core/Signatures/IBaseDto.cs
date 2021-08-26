@@ -1,6 +1,6 @@
 ﻿namespace ECommerce.Core.Signatures
 {
-    public class IBaseDto
+    public interface IBaseDto
     {
         
     }

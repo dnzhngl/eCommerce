@@ -1,8 +1,8 @@
-﻿using EShop.Core.Plugins.Caching;
-using EShop.Core.Plugins.Caching.Redis;
+﻿using ECommerce.Core.Plugins.Caching;
+using ECommerce.Core.Plugins.Caching.Redis;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace EShop.Api.Installers.Services
+namespace ECommerce.Api.Installers.Services
 {
     public class RedisInstaller:IServiceInstaller
     {
@@ -12,7 +12,7 @@ namespace EShop.Api.Installers.Services
             services.AddSingleton<ICacheService, RedisCacheService>();
             var opt = new RedisOption
             {
-                InstanceName = "EShop.Api",
+                InstanceName = "Ecommerce.Api",
                 ConnectionString = "localhost:6376,ssl=False",
                 AbsoluteExpiration = 60
             };

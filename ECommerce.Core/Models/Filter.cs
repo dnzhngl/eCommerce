@@ -1,4 +1,4 @@
-﻿namespace EShop.Core.Models
+﻿namespace ECommerce.Core.Models
 {
     public class Filter
     {

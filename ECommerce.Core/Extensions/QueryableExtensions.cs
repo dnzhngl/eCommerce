@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Linq;
 using System.Linq.Dynamic.Core;
-using EShop.Core.Models;
+using ECommerce.Core.Models;
 
-namespace EShop.Core.Extensions
+namespace ECommerce.Core.Extensions
 {
     public static class QueryableExtensions
     {

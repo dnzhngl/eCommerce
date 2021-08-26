@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Linq;
-using EShop.Core.Exceptions;
+using ECommerce.Core.Exceptions;
 using StackExchange.Redis;
 
-namespace EShop.Core.Plugins.Caching.Redis
+namespace ECommerce.Core.Plugins.Caching.Redis
 {
     public class RedisServer : IRedisServer
     {

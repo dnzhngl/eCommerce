@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
-using EShop.Core.Models;
-using EShop.Core.Signatures;
+using ECommerce.Core.Models;
+using ECommerce.Core.Signatures;
 
-namespace EShop.Core.Extensions
+namespace ECommerce.Core.Extensions
 {
     public static class PagedExtensions
     {

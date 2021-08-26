@@ -3,7 +3,7 @@ using System.Linq;
 using System.Reflection;
 using Castle.DynamicProxy;
 
-namespace EShop.Core.Aspects.Interceptors
+namespace ECommerce.Core.Aspects.Interceptors
 {
     public class AspectInterceptorSelector  :IInterceptorSelector
     {

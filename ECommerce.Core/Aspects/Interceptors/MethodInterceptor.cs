@@ -1,8 +1,8 @@
 ﻿using System;
 using Castle.DynamicProxy;
-using EShop.Core.Exceptions;
+using ECommerce.Core.Exceptions;
 
-namespace EShop.Core.Aspects.Interceptors
+namespace ECommerce.Core.Aspects.Interceptors
 {
     public class MethodInterception:MethodInterceptionBase
     {

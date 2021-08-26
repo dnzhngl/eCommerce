@@ -6,7 +6,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerUI;
 
-namespace EShop.Api.Installers.Services
+namespace ECommerce.Api.Installers.Services
 {
     public class SwaggerInstaller:IServiceInstaller, IConfigureInstaller
     {
@@ -16,12 +16,12 @@ namespace EShop.Api.Installers.Services
             {
                 c.SwaggerDoc("v1", new OpenApiInfo
                     {
-                        Title = "EShop.API",
+                        Title = "ECommerce.API",
                         Version = "v1",
                         Description = ".NET Core 5.0.100",
                         Contact = new OpenApiContact
                         {
-                            Name = "EShop Api Project",
+                            Name = "ECommerce Api Project",
                             Url = new Uri("https://www.yeditepesoft.com")
                         }
                     }

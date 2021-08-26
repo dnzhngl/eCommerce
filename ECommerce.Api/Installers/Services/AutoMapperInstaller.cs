@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using EShop.Business.Installers.Profiles;
+using ECommerce.Business.Installers.Profiles;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace EShop.Api.Installers.Services
+namespace ECommerce.Api.Installers.Services
 {
     public class AutoMapperInstaller : IServiceInstaller
     {

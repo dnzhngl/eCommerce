@@ -1,7 +1,13 @@
-﻿namespace ECommerce.Business.Validators
+﻿using eCommerce.DataAccess.Entities;
+using FluentValidation;
+
+namespace ECommerce.Business.Validators
 {
-    public class RuleValidator
+    public class RuleValidator : AbstractValidator<Rule>
     {
-        
+        public RuleValidator()
+        {
+            RuleFor(r => r.Table).NotNull().NotEmpty();
+        }
     }
 }

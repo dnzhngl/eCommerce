@@ -2,7 +2,7 @@
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 
-namespace EShop.DataAccess.Extensions
+namespace eCommerce.DataAccess.Extensions
 {
    public static class ModelBuilderExtension
     {
@@ -76,6 +76,7 @@ namespace EShop.DataAccess.Extensions
                         break;
                     case "Description":
                     case "Title":
+                    case "Url" :
                         property.SetMaxLength(100);
                         break;
                 }

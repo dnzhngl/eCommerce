@@ -1,7 +1,12 @@
-﻿namespace ECommerce.Business.Validators
+﻿using eCommerce.DataAccess.Entities;
+using FluentValidation;
+
+namespace ECommerce.Business.Validators
 {
-    public class ProductGroupLineValidator
+    public class ProductGroupLineValidator : AbstractValidator<ProductGroupLine>
     {
-        
+        public ProductGroupLineValidator()
+        {
+        }
     }
 }

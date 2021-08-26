@@ -1,11 +1,11 @@
-﻿using EShop.Api.Middlewares;
+﻿using ECommerce.Api.Middlewares;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace EShop.Api.Installers.Services
+namespace ECommerce.Api.Installers.Services
 {
     public class MvcInstaller : IServiceInstaller, IConfigureInstaller
     {

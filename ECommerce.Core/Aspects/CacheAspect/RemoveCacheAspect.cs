@@ -1,10 +1,10 @@
 ﻿using Castle.DynamicProxy;
-using EShop.Core.Aspects.Interceptors;
-using EShop.Core.Plugins.Caching;
-using EShop.Core.Tools;
+using ECommerce.Core.Aspects.Interceptors;
+using ECommerce.Core.Plugins.Caching;
+using ECommerce.Core.Tools;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace EShop.Core.Aspects.CacheAspect
+namespace ECommerce.Core.Aspects.CacheAspect
 {
     public class RemoveCacheAspect : MethodInterception
     {

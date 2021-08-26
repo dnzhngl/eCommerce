@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace EShop.Core.Tools
+namespace ECommerce.Core.Tools
 {
     public static class ServiceTool
     {

@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace EShop.Api.Installers
+namespace ECommerce.Api.Installers
 {
     public interface IServiceInstaller
     {

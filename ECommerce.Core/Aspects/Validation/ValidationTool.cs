@@ -1,9 +1,9 @@
 ﻿using System.Linq;
-using EShop.Core.Extensions;
-using EShop.Core.Models;
+using ECommerce.Core.Extensions;
+using ECommerce.Core.Models;
 using FluentValidation;
 
-namespace EShop.Core.Aspects.Validation
+namespace ECommerce.Core.Aspects.Validation
 {
     public static class ValidationTool
     {

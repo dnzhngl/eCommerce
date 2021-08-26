@@ -1,4 +1,4 @@
-﻿namespace EShop.Core.Plugins.Caching.Redis
+﻿namespace ECommerce.Core.Plugins.Caching.Redis
 {
     public class RedisOption
     {

@@ -1,7 +1,10 @@
-﻿namespace ECommerce.Business.Model
+﻿using ECommerce.Core.Signatures;
+
+namespace ECommerce.Business.Model
 {
-    public class UserGroupDto
+    public class UserGroupDto : IBaseDto
     {
-        
+        public string Description { get; set; }
+
     }
 }

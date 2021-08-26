@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Linq;
-using EShop.Api.Installers;
+using ECommerce.Api.Installers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace EShop.Api.Extensions
+namespace ECommerce.Api.Extensions
 {
     public static class InstallerExtensions
     {

@@ -8,11 +8,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ECommerce.Api.Controllers
 {
-    public class CitiesController : ControllerRepository<ICityService, CityDto>
+    public class CountriesController : ControllerRepository<ICountryService, CountryDto>
     {
-        private readonly ICityService _service;
+        private readonly ICountryService _service;
 
-        public CitiesController(ICityService service) : base(service)
+        public CountriesController(ICountryService service) : base(service)
         {
             _service = service;
         }

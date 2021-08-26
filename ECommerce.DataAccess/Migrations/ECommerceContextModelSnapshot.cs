@@ -52,8 +52,9 @@ namespace eCommerce.DataAccess.Migrations
                         .IsRequired()
                         .ValueGeneratedOnAdd()
                         .HasMaxLength(10)
-                        .HasColumnType("nvarchar(10)")
-                        .HasDefaultValueSql("space(0)");
+                        .HasColumnType("nchar(10)")
+                        .HasDefaultValueSql("space(0)")
+                        .IsFixedLength(true);
 
                     b.Property<bool>("IsBlocked")
                         .ValueGeneratedOnAdd()
@@ -108,6 +109,12 @@ namespace eCommerce.DataAccess.Migrations
                     b.Property<int>("AccountId")
                         .HasColumnType("int");
 
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("nvarchar(max)")
+                        .HasDefaultValueSql("space(0)");
+
                     b.Property<int>("AddressType")
                         .HasColumnType("int");
 
@@ -115,11 +122,6 @@ namespace eCommerce.DataAccess.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
                         .HasDefaultValueSql("GetDate()");
-
-                    b.Property<bool>("IsBlocked")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
-                        .HasDefaultValue(false);
 
                     b.Property<DateTime?>("UpdatedAt")
                         .ValueGeneratedOnAdd()
@@ -165,12 +167,16 @@ namespace eCommerce.DataAccess.Migrations
                     b.Property<string>("Url")
                         .IsRequired()
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("nvarchar(max)")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)")
                         .HasDefaultValueSql("space(0)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("Description")
+                        .IsUnique();
+
+                    b.HasIndex("Url")
                         .IsUnique();
 
                     b.ToTable("Brands");
@@ -199,7 +205,7 @@ namespace eCommerce.DataAccess.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasDefaultValueSql("space(0)");
 
-                    b.Property<int>("ParentCategoryId")
+                    b.Property<int?>("ParentId")
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("UpdatedAt")
@@ -210,12 +216,16 @@ namespace eCommerce.DataAccess.Migrations
                     b.Property<string>("Url")
                         .IsRequired()
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("nvarchar(max)")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)")
                         .HasDefaultValueSql("space(0)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ParentCategoryId");
+                    b.HasIndex("ParentId");
+
+                    b.HasIndex("Url")
+                        .IsUnique();
 
                     b.ToTable("Categories");
                 });
@@ -244,6 +254,12 @@ namespace eCommerce.DataAccess.Migrations
                         .IsRequired()
                         .ValueGeneratedOnAdd()
                         .HasColumnType("nvarchar(450)")
+                        .HasDefaultValueSql("space(0)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("nvarchar(max)")
                         .HasDefaultValueSql("space(0)");
 
                     b.Property<DateTime?>("UpdatedAt")
@@ -283,6 +299,12 @@ namespace eCommerce.DataAccess.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bit")
                         .HasDefaultValue(false);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("nvarchar(max)")
+                        .HasDefaultValueSql("space(0)");
 
                     b.Property<DateTime?>("UpdatedAt")
                         .ValueGeneratedOnAdd()
@@ -329,6 +351,12 @@ namespace eCommerce.DataAccess.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bit")
                         .HasDefaultValue(false);
+
+                    b.Property<string>("Symbol")
+                        .IsRequired()
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("nvarchar(max)")
+                        .HasDefaultValueSql("space(0)");
 
                     b.Property<DateTime?>("UpdatedAt")
                         .ValueGeneratedOnAdd()
@@ -406,11 +434,6 @@ namespace eCommerce.DataAccess.Migrations
                         .HasColumnType("decimal(18,4)")
                         .HasDefaultValue(0m);
 
-                    b.Property<bool>("IsBlocked")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
-                        .HasDefaultValue(false);
-
                     b.Property<DateTime?>("UpdatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
@@ -437,11 +460,6 @@ namespace eCommerce.DataAccess.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
                         .HasDefaultValueSql("GetDate()");
-
-                    b.Property<bool>("IsBlocked")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
-                        .HasDefaultValue(false);
 
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
@@ -479,11 +497,6 @@ namespace eCommerce.DataAccess.Migrations
                         .HasColumnType("nvarchar(100)")
                         .HasDefaultValueSql("space(0)");
 
-                    b.Property<bool>("IsBlocked")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
-                        .HasDefaultValue(false);
-
                     b.Property<DateTime?>("UpdatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
@@ -498,15 +511,13 @@ namespace eCommerce.DataAccess.Migrations
                         {
                             Id = 1,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Kadın",
-                            IsBlocked = false
+                            Description = "Kadın"
                         },
                         new
                         {
                             Id = 2,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Erkek",
-                            IsBlocked = false
+                            Description = "Erkek"
                         });
                 });
 
@@ -528,6 +539,9 @@ namespace eCommerce.DataAccess.Migrations
                         .HasColumnType("datetime2")
                         .HasDefaultValueSql("GetDate()");
 
+                    b.Property<int>("CurrencyId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Description")
                         .IsRequired()
                         .ValueGeneratedOnAdd()
@@ -540,19 +554,27 @@ namespace eCommerce.DataAccess.Migrations
                         .HasColumnType("bit")
                         .HasDefaultValue(false);
 
-                    b.Property<string>("Name")
-                        .IsRequired()
+                    b.Property<decimal>("Price")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("nvarchar(max)")
-                        .HasDefaultValueSql("space(0)");
-
-                    b.Property<int>("ProductGroupId")
-                        .HasColumnType("int");
+                        .HasColumnType("money")
+                        .HasDefaultValue(0m);
 
                     b.Property<DateTime?>("UpdatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
                         .HasDefaultValueSql("GetDate()");
+
+                    b.Property<string>("Url")
+                        .IsRequired()
+                        .ValueGeneratedOnAdd()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)")
+                        .HasDefaultValueSql("space(0)");
+
+                    b.Property<int>("VatRate")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasDefaultValue(0);
 
                     b.HasKey("Id");
 
@@ -560,7 +582,10 @@ namespace eCommerce.DataAccess.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.HasIndex("ProductGroupId");
+                    b.HasIndex("CurrencyId");
+
+                    b.HasIndex("Url")
+                        .IsUnique();
 
                     b.ToTable("Products");
                 });
@@ -584,11 +609,6 @@ namespace eCommerce.DataAccess.Migrations
                         .HasColumnType("nvarchar(100)")
                         .HasDefaultValueSql("space(0)");
 
-                    b.Property<bool>("IsBlocked")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
-                        .HasDefaultValue(false);
-
                     b.Property<DateTime?>("UpdatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
@@ -611,10 +631,11 @@ namespace eCommerce.DataAccess.Migrations
                         .HasColumnType("datetime2")
                         .HasDefaultValueSql("GetDate()");
 
-                    b.Property<bool>("IsBlocked")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
-                        .HasDefaultValue(false);
+                    b.Property<int>("ProductGroupId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime?>("UpdatedAt")
                         .ValueGeneratedOnAdd()
@@ -622,6 +643,10 @@ namespace eCommerce.DataAccess.Migrations
                         .HasDefaultValueSql("GetDate()");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ProductGroupId");
+
+                    b.HasIndex("ProductId");
 
                     b.ToTable("ProductGroupLines");
                 });
@@ -637,11 +662,6 @@ namespace eCommerce.DataAccess.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
                         .HasDefaultValueSql("GetDate()");
-
-                    b.Property<bool>("IsBlocked")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
-                        .HasDefaultValue(false);
 
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
@@ -709,11 +729,6 @@ namespace eCommerce.DataAccess.Migrations
                         .HasColumnType("datetime2")
                         .HasDefaultValueSql("GetDate()");
 
-                    b.Property<bool>("IsBlocked")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
-                        .HasDefaultValue(false);
-
                     b.Property<bool>("IsDelete")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bit")
@@ -767,11 +782,6 @@ namespace eCommerce.DataAccess.Migrations
                         .HasColumnType("datetime2")
                         .HasDefaultValueSql("GetDate()");
 
-                    b.Property<bool>("IsBlocked")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
-                        .HasDefaultValue(false);
-
                     b.Property<string>("Key")
                         .IsRequired()
                         .ValueGeneratedOnAdd()
@@ -816,11 +826,6 @@ namespace eCommerce.DataAccess.Migrations
                         .HasColumnType("nvarchar(100)")
                         .HasDefaultValueSql("space(0)");
 
-                    b.Property<bool>("IsBlocked")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
-                        .HasDefaultValue(false);
-
                     b.Property<DateTime?>("UpdatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
@@ -859,7 +864,7 @@ namespace eCommerce.DataAccess.Migrations
             modelBuilder.Entity("eCommerce.DataAccess.Entities.AccountAddress", b =>
                 {
                     b.HasOne("eCommerce.DataAccess.Entities.Account", "Account")
-                        .WithMany()
+                        .WithMany("AccountAddresses")
                         .HasForeignKey("AccountId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
@@ -869,19 +874,17 @@ namespace eCommerce.DataAccess.Migrations
 
             modelBuilder.Entity("eCommerce.DataAccess.Entities.Category", b =>
                 {
-                    b.HasOne("eCommerce.DataAccess.Entities.Category", "ParentCategory")
+                    b.HasOne("eCommerce.DataAccess.Entities.Category", "Parent")
                         .WithMany()
-                        .HasForeignKey("ParentCategoryId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .HasForeignKey("ParentId");
 
-                    b.Navigation("ParentCategory");
+                    b.Navigation("Parent");
                 });
 
             modelBuilder.Entity("eCommerce.DataAccess.Entities.City", b =>
                 {
                     b.HasOne("eCommerce.DataAccess.Entities.Country", "Country")
-                        .WithMany()
+                        .WithMany("Cities")
                         .HasForeignKey("CountryId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
@@ -892,7 +895,7 @@ namespace eCommerce.DataAccess.Migrations
             modelBuilder.Entity("eCommerce.DataAccess.Entities.District", b =>
                 {
                     b.HasOne("eCommerce.DataAccess.Entities.City", "City")
-                        .WithMany()
+                        .WithMany("Districts")
                         .HasForeignKey("CityId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
@@ -903,7 +906,7 @@ namespace eCommerce.DataAccess.Migrations
             modelBuilder.Entity("eCommerce.DataAccess.Entities.ExchangeRateHistory", b =>
                 {
                     b.HasOne("eCommerce.DataAccess.Entities.Currency", "Currency")
-                        .WithMany()
+                        .WithMany("ExchangeRateHistories")
                         .HasForeignKey("CurrencyId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
@@ -914,13 +917,13 @@ namespace eCommerce.DataAccess.Migrations
             modelBuilder.Entity("eCommerce.DataAccess.Entities.FavoriteProduct", b =>
                 {
                     b.HasOne("eCommerce.DataAccess.Entities.Account", "Account")
-                        .WithMany()
+                        .WithMany("FavoriteProducts")
                         .HasForeignKey("AccountId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("eCommerce.DataAccess.Entities.Product", "Product")
-                        .WithMany()
+                        .WithMany("FavoriteProducts")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
@@ -944,9 +947,9 @@ namespace eCommerce.DataAccess.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("eCommerce.DataAccess.Entities.ProductGroup", "ProductGroup")
+                    b.HasOne("eCommerce.DataAccess.Entities.Currency", "Currency")
                         .WithMany()
-                        .HasForeignKey("ProductGroupId")
+                        .HasForeignKey("CurrencyId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
@@ -954,13 +957,32 @@ namespace eCommerce.DataAccess.Migrations
 
                     b.Navigation("Category");
 
+                    b.Navigation("Currency");
+                });
+
+            modelBuilder.Entity("eCommerce.DataAccess.Entities.ProductGroupLine", b =>
+                {
+                    b.HasOne("eCommerce.DataAccess.Entities.ProductGroup", "ProductGroup")
+                        .WithMany("ProductGroupLines")
+                        .HasForeignKey("ProductGroupId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("eCommerce.DataAccess.Entities.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+
                     b.Navigation("ProductGroup");
                 });
 
             modelBuilder.Entity("eCommerce.DataAccess.Entities.RelatedProduct", b =>
                 {
                     b.HasOne("eCommerce.DataAccess.Entities.Product", "Product")
-                        .WithMany()
+                        .WithMany("RelatedProducts")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
@@ -985,6 +1007,40 @@ namespace eCommerce.DataAccess.Migrations
                         .IsRequired();
 
                     b.Navigation("Role");
+                });
+
+            modelBuilder.Entity("eCommerce.DataAccess.Entities.Account", b =>
+                {
+                    b.Navigation("AccountAddresses");
+
+                    b.Navigation("FavoriteProducts");
+                });
+
+            modelBuilder.Entity("eCommerce.DataAccess.Entities.City", b =>
+                {
+                    b.Navigation("Districts");
+                });
+
+            modelBuilder.Entity("eCommerce.DataAccess.Entities.Country", b =>
+                {
+                    b.Navigation("Cities");
+                });
+
+            modelBuilder.Entity("eCommerce.DataAccess.Entities.Currency", b =>
+                {
+                    b.Navigation("ExchangeRateHistories");
+                });
+
+            modelBuilder.Entity("eCommerce.DataAccess.Entities.Product", b =>
+                {
+                    b.Navigation("FavoriteProducts");
+
+                    b.Navigation("RelatedProducts");
+                });
+
+            modelBuilder.Entity("eCommerce.DataAccess.Entities.ProductGroup", b =>
+                {
+                    b.Navigation("ProductGroupLines");
                 });
 #pragma warning restore 612, 618
         }

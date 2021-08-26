@@ -2,13 +2,13 @@
 using System.Net;
 using System.Text.Json;
 using System.Threading.Tasks;
-using EShop.Core.Exceptions;
-using EShop.Core.Models;
+using ECommerce.Core.Exceptions;
+using ECommerce.Core.Models;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Hosting;
 
-namespace EShop.Api.Middlewares
+namespace ECommerce.Api.Middlewares
 {
     public class ErrorHandlingMiddleware
     {

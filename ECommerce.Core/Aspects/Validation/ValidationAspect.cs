@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Linq;
 using Castle.DynamicProxy;
-using EShop.Core.Aspects.Interceptors;
+using ECommerce.Core.Aspects.Interceptors;
 using FluentValidation;
 
-
-namespace EShop.Core.Aspects.Validation
+namespace ECommerce.Core.Aspects.Validation
 {
     public class ValidationAspect : MethodInterception
     {

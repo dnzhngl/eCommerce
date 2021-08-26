@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace EShop.Core.Plugins.Caching
+namespace ECommerce.Core.Plugins.Caching
 {
     public interface ICacheService
     {

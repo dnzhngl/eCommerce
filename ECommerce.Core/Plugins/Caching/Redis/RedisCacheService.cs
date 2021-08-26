@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
-using EShop.Core.Extensions;
+using ECommerce.Core.Extensions;
 
-namespace EShop.Core.Plugins.Caching.Redis
+namespace ECommerce.Core.Plugins.Caching.Redis
 {
     public class RedisCacheService : ICacheService
     {

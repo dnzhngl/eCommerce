@@ -5,8 +5,8 @@ using ECommerce.Core.Models;
 
 namespace ECommerce.Business.Abstract
 {
-    public interface IExchangeRateHistory : IServiceRepository<ExchangeRateHistoryDto>
+    public interface IExchangeRateHistoryService : IServiceRepository<ExchangeRateHistoryDto>
     {
-        Task<PagedList<ExchangeRateHistoriesDto>> GetAllAsync(Filter filter);
+        Task<PagedList<ExchangeRateHistoriesDto>> GetAllAsync(Filter filter, int currencyId);
     }
 }

@@ -1,11 +1,11 @@
 ﻿using System.Text;
-using EShop.Core.Plugins.Authentication.Jwt;
-using EShop.Core.Plugins.Authentication.Models;
+using ECommerce.Core.Plugins.Authentication.Jwt;
+using ECommerce.Core.Plugins.Authentication.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 
-namespace EShop.Api.Installers.Services
+namespace ECommerce.Api.Installers.Services
 {
     public class JwtInstaller : IServiceInstaller 
     {
@@ -13,8 +13,8 @@ namespace EShop.Api.Installers.Services
         {
             var jwtOption = new JwtOption
             {
-                Audience = "EShop",
-                Issuer = "EShop",
+                Audience = "ECommerce",
+                Issuer = "ECommerce",
                 SecurityKey = "F2peYX7865Yk8wztCxg8jzZGF5yEx4vu4TK4mN8DLtsVpnGa3V5jabYjFhGf",
                 AccessTokenExpiration = 10,
                 RefreshTokenExpiration = 50

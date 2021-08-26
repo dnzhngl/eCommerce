@@ -1,13 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
-using EShop.Business.Repositories;
-using EShop.Core.Exceptions;
-using EShop.Core.Signatures;
+using ECommerce.Business.Repositories;
+using ECommerce.Core.Exceptions;
+using ECommerce.Core.Signatures;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace EShop.Api.Repository
+namespace ECommerce.Api.Repository
 {
     [Route("api/[controller]")]
     [ApiController]

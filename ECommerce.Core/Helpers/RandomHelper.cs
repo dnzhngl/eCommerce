@@ -3,7 +3,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace EShop.Core.Helpers
+namespace ECommerce.Core.Helpers
 {
     public static class RandomHelper
     {

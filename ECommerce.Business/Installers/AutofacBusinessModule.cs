@@ -2,10 +2,10 @@
 using Autofac;
 using Autofac.Extras.DynamicProxy;
 using Castle.DynamicProxy;
-using EShop.Core.Aspects.Interceptors;
+using ECommerce.Core.Aspects.Interceptors;
 using Module = Autofac.Module;
 
-namespace EShop.Business.Installers
+namespace ECommerce.Business.Installers
 {
     public class AutofacBusinessModule  :Module
     {

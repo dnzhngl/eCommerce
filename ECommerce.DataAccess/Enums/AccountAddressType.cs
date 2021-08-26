@@ -1,4 +1,4 @@
-﻿namespace eCommerce.DataAccess.Entities
+﻿namespace eCommerce.DataAccess.Enums
 {
     public enum AccountAddressType
     {

@@ -1,6 +1,6 @@
-﻿using EShop.Core.Plugins.Authentication.Models;
+﻿using ECommerce.Core.Plugins.Authentication.Models;
 
-namespace EShop.Core.Plugins.Authentication.Jwt
+namespace ECommerce.Core.Plugins.Authentication.Jwt
 {
     public interface IJwtService
     {

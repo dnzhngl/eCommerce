@@ -1,7 +1,7 @@
 ﻿using System;
 using Castle.DynamicProxy;
 
-namespace EShop.Core.Aspects.Interceptors
+namespace ECommerce.Core.Aspects.Interceptors
 {
     [AttributeUsage(AttributeTargets.Class| AttributeTargets.Method,AllowMultiple = true)]
     

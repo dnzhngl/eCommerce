@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace EShop.Core.Models
+namespace ECommerce.Core.Models
 {
     public class PagedList<TDto> 
         //where TDto : class,IBaseListDto, new()

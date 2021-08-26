@@ -1,4 +1,4 @@
-﻿namespace EShop.Core.Plugins.Authentication.Models
+﻿namespace ECommerce.Core.Plugins.Authentication.Models
 {
     public class LoginRequestModel
     {

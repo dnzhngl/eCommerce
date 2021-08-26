@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
-namespace EShop.Core.Extensions
+namespace ECommerce.Core.Extensions
 {
     public static class JsonExtensions
     {
