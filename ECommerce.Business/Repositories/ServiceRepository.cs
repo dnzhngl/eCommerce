@@ -21,12 +21,14 @@ namespace ECommerce.Business.Repositories
             _mapper = mapper;
         }
         
+        [CacheAspect]
         public virtual async Task<TDto> GetAsync(int id)
         {
             var entity = await _repository.GetAsync(id);
             return _mapper.Map<TDto>(entity);
         }
 
+        [RemoveCacheAspect]
         public virtual async Task<int> InsertAsync(TDto dto)
         {
             var entity = _mapper.Map<TEntity>(dto);
@@ -34,6 +36,7 @@ namespace ECommerce.Business.Repositories
             return entity.Id;
         }
 
+        [RemoveCacheAspect]
         public virtual async Task UpdateAsync(int id, TDto dto)
         {
             var entity = _mapper.Map<TEntity>(dto);
@@ -41,12 +44,14 @@ namespace ECommerce.Business.Repositories
             await _repository.UpdateAsync(entity);
         }
 
+        [RemoveCacheAspect]
         public virtual async Task DeleteAsync(int id)
         {
             var entity = await _repository.GetAsync(id);
             await _repository.DeleteAsync(entity);
         }
 
+        [RemoveCacheAspect]
         public virtual async Task DeleteRangeAsync(List<int> listOfId)
         {
             var entities = await _repository.AsNoTracking.Where(x => listOfId.Contains(x.Id))
@@ -54,6 +59,7 @@ namespace ECommerce.Business.Repositories
             await _repository.DeleteRangeAsync(entities);
         }
 
+        [RemoveCacheAspect]
         public virtual async Task RemoveCacheAsync()
         {
             await Task.CompletedTask.ConfigureAwait(false);

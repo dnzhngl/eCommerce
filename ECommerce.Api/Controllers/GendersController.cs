@@ -23,7 +23,17 @@ namespace ECommerce.Api.Controllers
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         public async Task<IActionResult> GetAll([FromQuery]Filter filter)
         {
-            var data =await _service.GetAllAsync(filter);
+            var data = await _service.GetAllAsync(filter);
+            return Ok(data);
+        }
+        
+        [HttpGet("GetAllGendersAsync")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        public async Task<IActionResult> GetAll()
+        {
+            var data = await _service.GetAllGendersAsync();
             return Ok(data);
         }
     }

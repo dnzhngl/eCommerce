@@ -36,7 +36,7 @@ namespace ECommerce.Business.Concrete
                 .Filter(filter).ToPagedList<Gender, GendersDto>(filter, _mapper));
         }
         
-        public async Task<List<GendersDto>> GetAllAsync()
+        public async Task<List<GendersDto>> GetAllGendersAsync()
         {
             var table = await _repository.Table.ToListAsync();
             var dto = _mapper.Map<List<Gender>, List<GendersDto>>(table);
